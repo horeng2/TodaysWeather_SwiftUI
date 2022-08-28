@@ -8,7 +8,7 @@
 import Foundation
 
 struct WeatherInfoRequest: APIRequest {
-    typealias ResponseType = WeatherData
+    typealias ResponseType = ResponseWeatherData
         
     let cityGeoInfo: GeoInfo
  
