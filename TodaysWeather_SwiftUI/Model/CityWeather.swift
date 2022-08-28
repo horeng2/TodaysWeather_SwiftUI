@@ -9,17 +9,14 @@ import Foundation
 import SwiftUI
 
 struct CityWeather {
-    let name: String
+    let cityName: City
     
     let weatherCondition: String
     let description: String
-    let icon: Image
+    let iconURL: String
     let currentTemperatures: Int
     let feelsTemperatures: Int
     let currentHumidity: Int
-    let minimumTemperatures: Int
-    let maximumTemperatures: Int
     let pressure: Int
-    let windSpeed: Int
-    var cityName: String
+    let windSpeed: Double
 }

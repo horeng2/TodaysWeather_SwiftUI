@@ -6,3 +6,13 @@
 //
 
 import Foundation
+import Combine
+
+final class ModelData: ObservableObject {
+    @Published var cityWeathers = Repository().loadCityWeathers()
+    
+}
+
+
+
+
