@@ -128,12 +128,12 @@
 		4822DACB28B9EBCA00400AEA /* TodaysWeather_SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				4822DACC28B9EBCA00400AEA /* TodaysWeather_SwiftUIApp.swift */,
 				4822DB2028BB2E4400400AEA /* SecretKey.plist */,
 				4822DB1E28BB2E3500400AEA /* APIKeyBundle.swift */,
 				4822DB0528B9F28100400AEA /* Model */,
 				4822DB1428BB268400400AEA /* Network */,
 				4822DAD028B9EBCB00400AEA /* Assets.xcassets */,
-				4822DACC28B9EBCA00400AEA /* TodaysWeather_SwiftUIApp.swift */,
 				4822DAF628B9ED7700400AEA /* Views */,
 				4822DAD228B9EBCB00400AEA /* Preview Content */,
 			);
