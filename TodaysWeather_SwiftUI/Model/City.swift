@@ -2,24 +2,30 @@
 //  City.swift
 //  TodaysWeather_SwiftUI
 //
-//  Created by 서녕 on 2022/08/28.
+//  Created by 서녕 on 2022/08/27.
 //
 
 import Foundation
-import SwiftUI
 
-struct City {
-    let name: String
-    
-    let weatherCondition: String
-    let description: String
-    let icon: Image
-    let currentTemperatures: Int
-    let feelsTemperatures: Int
-    let currentHumidity: Int
-    let minimumTemperatures: Int
-    let maximumTemperatures: Int
-    let pressure: Int
-    let windSpeed: Int
-    var cityName: String
+enum City: CaseIterable, Decodable {
+    case Gongju
+    case Gwangju
+    case Gumi
+    case Gunsan
+    case Daegu
+    case Daejeon
+    case Mokpo
+    case Busan
+    case Seosan
+    case Seoul
+    case Sokcho
+    case Suwon
+    case Suncheon
+    case Ulsan
+    case Iksan
+    case Jeonju
+    case jeju
+    case Cheonan
+    case Cheongju
+    case Chuncheon
 }

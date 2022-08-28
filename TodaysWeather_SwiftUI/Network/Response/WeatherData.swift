@@ -1,5 +1,5 @@
 //
-//  Weather.swift
+//  WeatherData.swift
 //  TodaysWeather_SwiftUI
 //
 //  Created by 서녕 on 2022/08/27.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Weather: Decodable {
+struct WeatherData: Decodable {
     let list: List
     
     struct List: Decodable {
