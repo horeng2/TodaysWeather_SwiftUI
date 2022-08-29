@@ -9,11 +9,12 @@ import SwiftUI
 
 struct CityList: View {
     @EnvironmentObject var repository: Repository
+    @EnvironmentObject var imageCacheManager: ImageCacheManager
     @State private var showFavoritesOnly = false
     
     var filteredCities: [CityWeather] {
         repository.cityWeathers.filter { city in
-            (!showFavoritesOnly)}
+            (!showFavoritesOnly || city.isFavorite)}
     }
     
     var body: some View {
@@ -33,11 +34,6 @@ struct CityList: View {
                 .navigationTitle("오늘의 날씨")
             }
             .listStyle(PlainListStyle())
-        }    }
-}
-
-struct CityList_Previews: PreviewProvider {
-    static var previews: some View {
-        CityList()
+        }
     }
 }

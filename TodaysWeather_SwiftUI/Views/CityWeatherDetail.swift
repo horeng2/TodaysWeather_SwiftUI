@@ -13,18 +13,9 @@ struct CityWeatherDetail: View {
     
     var body: some View {
         VStack {
-            Text("서울")
+            Text(cityWeather.cityName.rawValue)
                 .font(.title)
-            Image(systemName: "star.fill")
         }
     }
 }
 
-struct CityWeatherDetail_Previews: PreviewProvider {
-    static let repository = Repository()
-    
-    static var previews: some View {
-        CityWeatherDetail(cityWeather: Repository().cityWeathers[0])
-            .environmentObject(repository)
-    }
-}

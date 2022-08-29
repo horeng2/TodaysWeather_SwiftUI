@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		481FEA5128BCCB050091573E /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481FEA5028BCCB050091573E /* ImageCacheManager.swift */; };
 		4822DACD28B9EBCA00400AEA /* TodaysWeather_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4822DACC28B9EBCA00400AEA /* TodaysWeather_SwiftUIApp.swift */; };
 		4822DACF28B9EBCA00400AEA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4822DACE28B9EBCA00400AEA /* ContentView.swift */; };
 		4822DAD128B9EBCB00400AEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4822DAD028B9EBCB00400AEA /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		481FEA5028BCCB050091573E /* ImageCacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		4822DAC928B9EBCA00400AEA /* TodaysWeather_SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodaysWeather_SwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4822DACC28B9EBCA00400AEA /* TodaysWeather_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaysWeather_SwiftUIApp.swift; sourceTree = "<group>"; };
 		4822DACE28B9EBCA00400AEA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				4895092128BB60DC00DB5F02 /* CityList.swift */,
 				4822DAF928B9EDD900400AEA /* CityWeatherRow.swift */,
 				4895092328BB619D00DB5F02 /* CityWeatherDetail.swift */,
+				481FEA5028BCCB050091573E /* ImageCacheManager.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				4822DB1B28BB2E0000400AEA /* APIRequest+Protocol.swift in Sources */,
 				4895092228BB60DC00DB5F02 /* CityList.swift in Sources */,
 				4822DB1F28BB2E3500400AEA /* APIKeyBundle.swift in Sources */,
+				481FEA5128BCCB050091573E /* ImageCacheManager.swift in Sources */,
 				4822DB1328BB246900400AEA /* CityWeather.swift in Sources */,
 				4895092428BB619D00DB5F02 /* CityWeatherDetail.swift in Sources */,
 				4822DB2D28BB3ABA00400AEA /* Repository.swift in Sources */,
