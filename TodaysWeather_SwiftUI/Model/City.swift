@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum City: CaseIterable, Decodable {
+enum City: String, CaseIterable, Decodable {
     case Gongju
     case Gwangju
     case Gumi
