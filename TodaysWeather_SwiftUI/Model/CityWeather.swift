@@ -8,8 +8,9 @@
 import Foundation
 import SwiftUI
 
-struct CityWeather {
+struct CityWeather: Hashable {
     let cityName: City
+    let isFavorite = false
     
     let weatherCondition: String
     let description: String
