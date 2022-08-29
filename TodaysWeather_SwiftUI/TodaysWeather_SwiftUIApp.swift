@@ -9,12 +9,12 @@ import SwiftUI
 
 @main
 struct TodaysWeather_SwiftUIApp: App {
-    @StateObject private var modelData = ModelData()
+    @StateObject private var repository = Repository()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(modelData)
+                .environmentObject(repository)
         }
     }
 }
