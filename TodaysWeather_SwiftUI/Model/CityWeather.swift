@@ -21,3 +21,46 @@ struct CityWeather: Hashable {
     let pressure: Int
     let windSpeed: Double
 }
+
+enum WeatherConditionType {
+    case clear
+    case cloudy
+    case overcast
+    case rain
+    case snow
+    case unknown
+}
+
+enum ImageURL {
+    case icon
+    
+    func url(key: String) -> String {
+        switch self {
+        case .icon:
+            return "http://openweathermap.org/img/wn/\(key)@2x.png"
+        }
+    }
+}
+
+enum TemperatureUnit {
+    case humidity
+    case celsius
+    case fahrenheit
+    case windSpeed
+    case pressure
+
+    var symbol: String {
+        switch self {
+        case .humidity:
+            return "%"
+        case .celsius:
+            return "ºC"
+        case .fahrenheit:
+            return "ºF"
+        case .windSpeed:
+            return "m/s"
+        case .pressure:
+            return "hPa"
+        }
+    }
+}
