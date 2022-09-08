@@ -37,3 +37,11 @@ struct CityList: View {
         }
     }
 }
+
+struct CityList_Previews: PreviewProvider {
+    static var previews: some View {
+        CityList()
+            .environmentObject(Repository())
+            .environmentObject(ImageCacheManager())
+    }
+}

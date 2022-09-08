@@ -558,7 +558,7 @@
 				DEVELOPMENT_TEAM = 54T77SSM5Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "TodaysWeather-SwiftUI-Info.plist";
+				INFOPLIST_FILE = "TodaysWeather_SwiftUI/Resources/TodaysWeather-SwiftUI-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -588,7 +588,7 @@
 				DEVELOPMENT_TEAM = 54T77SSM5Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "TodaysWeather-SwiftUI-Info.plist";
+				INFOPLIST_FILE = "TodaysWeather_SwiftUI/Resources/TodaysWeather-SwiftUI-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

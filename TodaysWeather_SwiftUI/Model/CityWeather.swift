@@ -64,3 +64,26 @@ enum TemperatureUnit {
         }
     }
 }
+
+extension CityWeather {
+    static let mockData: [CityWeather] = [
+        CityWeather(cityName: .Seoul,
+                weatherCondition: "맑음",
+                description: "맑아요",
+                iconURL: "http://openweathermap.org/img/wn/10d@2x.png",
+                currentTemperatures: 1,
+                feelsTemperatures: 2,
+                currentHumidity: 3,
+                pressure: 4,
+                windSpeed: 5),
+        CityWeather(cityName: .Busan,
+                weatherCondition: "흐림",
+                description: "흐려요",
+                iconURL: "http://openweathermap.org/img/wn/11d@2x.png",
+                currentTemperatures: 6,
+                feelsTemperatures: 7,
+                currentHumidity: 8,
+                pressure: 9,
+                windSpeed: 10)
+    ]
+}

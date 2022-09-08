@@ -49,3 +49,10 @@ struct CityWeatherRow: View {
         .padding()
     }
 }
+
+struct CityWeatherRow_Previews: PreviewProvider {
+    static var previews: some View {
+        CityWeatherRow(cityWeather: CityWeather.mockData[0])
+            .environmentObject(ImageCacheManager())
+    }
+}

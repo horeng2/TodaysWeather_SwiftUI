@@ -11,7 +11,6 @@ struct CityWeatherDetail: View {
     @EnvironmentObject var imageCacheManager: ImageCacheManager
     @EnvironmentObject var repository: Repository
     var cityWeather: CityWeather
-    @State var image = UIImage()
     
     var body: some View {
         content
@@ -52,6 +51,14 @@ struct CityWeatherDetail: View {
        
             }
         }
+    }
+}
+
+struct CityWeatherDetail_PreViews: PreviewProvider {
+    static var previews: some View {
+        CityWeatherDetail(cityWeather: CityWeather.mockData[0])
+            .environmentObject(Repository())
+            .environmentObject(ImageCacheManager())
     }
 }
 

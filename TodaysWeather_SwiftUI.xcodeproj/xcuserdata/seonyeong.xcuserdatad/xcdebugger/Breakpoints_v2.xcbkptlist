@@ -3,4 +3,54 @@
    uuid = "14565068-33A7-49C5-BA5B-A0A6B5F72C5D"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "609BC1BF-5C7F-4B84-9387-3CE3DA6636D0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TodaysWeather_SwiftUI/Utillty/ImageCacheManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "loadImage(url:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "609BC1BF-5C7F-4B84-9387-3CE3DA6636D0 - 989540817218cd79"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TodaysWeather_SwiftUI.ImageCacheManager.loadImage(url: Swift.String) -&gt; ()"
+                  moduleName = "TodaysWeather_SwiftUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seonyeong/Documents/TodaysWeather_SwiftUI/TodaysWeather_SwiftUI/Utillty/ImageCacheManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "232">
+               </Location>
+               <Location
+                  uuid = "609BC1BF-5C7F-4B84-9387-3CE3DA6636D0 - 989540817218cd79"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TodaysWeather_SwiftUI.ImageCacheManager.loadImage(url: Swift.String) -&gt; ()"
+                  moduleName = "TodaysWeather_SwiftUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seonyeong/Documents/TodaysWeather_SwiftUI/TodaysWeather_SwiftUI/Utillty/ImageCacheManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "292">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
