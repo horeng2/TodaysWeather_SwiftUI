@@ -6,3 +6,16 @@
 //
 
 import Foundation
+import Combine
+
+class FetchWeatherUseCase {
+    let repository: WeatherRepository
+    
+    init(repository: WeatherRepository) {
+        self.repository = repository
+    }
+    
+    func fetchWeatherInfo(of city: City) -> AnyPublisher<CityWeather, WeatherError> {
+        return self.repository.fetchWeatherData(of: city)
+    }
+}
