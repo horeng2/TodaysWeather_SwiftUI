@@ -11,13 +11,13 @@ struct WeatherInfoRequest: APIRequest {
     typealias ResponseType = ResponseWeatherData
         
     let cityGeoInfo: GeoInfo
- 
-    var url: URL? {
-        URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(cityGeoInfo.latitude)&lon=\(cityGeoInfo.longitude)&appid=\(Bundle.main.openWeatherAPIKey)&units=metric&lang=kr")
+    
+    var component: URLComponents {
+        RequestComponent.shared.makeWeatherComponents(with: cityGeoInfo)
     }
     
     var urlRequest: URLRequest? {
-        guard let url = self.url else {
+        guard let url = component.url else {
             return nil
         }
         return URLRequest(url: url)

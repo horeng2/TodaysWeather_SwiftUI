@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CityList: View {
-    @EnvironmentObject var repository: Repository
+    @EnvironmentObject var repository: WeatherRepository
     @EnvironmentObject var imageCacheManager: ImageCacheManager
     @State private var showFavoritesOnly = false
     
@@ -41,7 +41,7 @@ struct CityList: View {
 struct CityList_Previews: PreviewProvider {
     static var previews: some View {
         CityList()
-            .environmentObject(Repository())
+            .environmentObject(WeatherRepository())
             .environmentObject(ImageCacheManager())
     }
 }
