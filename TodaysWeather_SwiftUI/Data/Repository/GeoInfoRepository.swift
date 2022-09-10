@@ -10,16 +10,9 @@ import Combine
 
 class GeoInfoRepository: ObservableObject {
     private let apiProvider = APIProvider()
-    var cancelBag = Set<AnyCancellable>()
-
-    func fetchGeoInfo(of city: City) async -> AnyPublisher<GeoInfo, Never> {
-        do {
-            let request = GeoInfoRequest(city: city)
-            let responseData = try await self.apiProvider.request(requestType: request)
-            return decode(responseData)
-        } catch {
-            print(error)
-            return Empty().eraseToAnyPublisher()
-        }
+    
+    func fetchGeoInfo(of city: City) -> AnyPublisher<GeoInfo, WeatherError> {
+        let request = GeoInfoRequest(city: city)
+        return self.apiProvider.request(requestType: request)
     }
 }

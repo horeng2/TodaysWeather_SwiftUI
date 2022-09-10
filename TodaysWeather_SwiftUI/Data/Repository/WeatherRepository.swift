@@ -11,17 +11,15 @@ import Combine
 class WeatherRepository: ObservableObject {
     private let apiProvider = APIProvider()
     
-    private func loadWeatherData(of city: City) async throws -> AnyPublisher<ResponseWeatherData, Never> {
-        do {
-            guard let geoInfo = UserDefaults.standard.object(forKey: city.rawValue) as? GeoInfo else {
-                fatalError("Couldn't find GeoInfo in UserDefaults.")
-            }
-            let request = WeatherInfoRequest(cityGeoInfo: geoInfo)
-            let responseData = try await self.apiProvider.request(requestType: request)
-            return decode(responseData)
-        } catch {
-            print(error)
-            return Empty().eraseToAnyPublisher()
+    func fetchWeatherData(of city: City) -> AnyPublisher<CityWeather, WeatherError> {
+        guard let geoInfo = UserDefaults.standard.object(forKey: city.rawValue) as? GeoInfo else {
+            fatalError("Couldn't find GeoInfo in UserDefaults.")
         }
+        let request = WeatherInfoRequest(cityGeoInfo: geoInfo)
+        return self.apiProvider.request(requestType: request)
+            .map{ data in
+                data.domain(of: city)
+            }
+            .eraseToAnyPublisher()
     }
 }
