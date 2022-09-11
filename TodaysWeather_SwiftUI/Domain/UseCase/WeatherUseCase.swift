@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class FetchWeatherUseCase {
+class WeatherUseCase {
     let repository: WeatherRepository
     
     init(repository: WeatherRepository) {
