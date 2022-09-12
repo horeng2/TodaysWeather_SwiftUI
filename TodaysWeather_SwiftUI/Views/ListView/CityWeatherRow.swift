@@ -8,15 +8,22 @@
 import SwiftUI
 
 struct CityWeatherRow: View {
-    @EnvironmentObject var imageCacheManager: ImageCacheManager
+//    @EnvironmentObject var imageCacheManager: ImageCacheManager
     @State var image = UIImage()
     var cityWeather: CityWeather
+    
+//    init(cityWeather: CityWeather) {
+//        self.cityWeather = cityWeather
+//        ImageCacheManager.shared.loadImage(url: cityWeather.iconURL)
+//    }
     
     var body: some View {
         content
             .onAppear {
-                self.imageCacheManager.loadImage(url: cityWeather.iconURL)
-                self.image = self.imageCacheManager.image
+                    ImageCacheManager.shared.loadImage(url: cityWeather.iconURL)
+                DispatchQueue.main.async {
+                    self.image = ImageCacheManager.shared.image
+                }
             }
     }
     
@@ -26,7 +33,7 @@ struct CityWeatherRow: View {
                 .resizable()
                 .frame(width: 60, height: 60)
 
-            Text(cityWeather.cityName.rawValue)
+            Text(cityWeather.cityName)
                 .font(.title2)
             Spacer()
             

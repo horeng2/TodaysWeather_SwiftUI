@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+enum WeatherError: Error {
+    case responseError
+    case createUrlError
+    case parsingError
+    case invaildData
+    case network(description: String)
+}

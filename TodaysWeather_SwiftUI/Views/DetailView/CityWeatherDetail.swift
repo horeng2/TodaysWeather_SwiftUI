@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CityWeatherDetail: View {
-    @EnvironmentObject var imageCacheManager: ImageCacheManager
     @EnvironmentObject var repository: WeatherRepository
     var cityWeather: CityWeather
     @State var image = UIImage()
@@ -16,15 +15,15 @@ struct CityWeatherDetail: View {
     var body: some View {
         content
             .onAppear {
-                self.imageCacheManager.loadImage(url: cityWeather.iconURL)
-                self.image = imageCacheManager.image
+                ImageCacheManager.shared.loadImage(url: cityWeather.iconURL)
+                self.image = ImageCacheManager.shared.image
             }
     }
     
     var content: some View {
         VStack {
             Image(uiImage: self.image)
-            Text(cityWeather.cityName.rawValue)
+            Text(cityWeather.cityName)
                 .font(.title)
             Text(cityWeather.description)
 

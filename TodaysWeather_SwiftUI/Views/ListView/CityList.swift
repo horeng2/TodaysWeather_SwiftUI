@@ -8,23 +8,17 @@
 import SwiftUI
 
 struct CityList: View {
-    @EnvironmentObject var repository: WeatherRepository
-    @EnvironmentObject var imageCacheManager: ImageCacheManager
-    @State private var showFavoritesOnly = false
-    
-    var filteredCities: [CityWeather] {
-        repository.cityWeathers.filter { city in
-            (!showFavoritesOnly || city.isFavorite)}
+    @ObservedObject var listViewModel: CityListViewModel
+
+    init(viewModel: CityListViewModel) {
+        self.listViewModel = viewModel
+        self.listViewModel.weather()
     }
     
     var body: some View {
         NavigationView {
             List {
-                Toggle(isOn: $showFavoritesOnly) {
-                    Text("Favorites only")
-                }
-                
-                ForEach(repository.cityWeathers, id: \.cityName) { cityWeather in
+                ForEach(listViewModel.weatherDataSource, id: \.cityName) { cityWeather in
                     NavigationLink {
                         CityWeatherDetail(cityWeather: cityWeather)
                     } label: {
@@ -33,6 +27,7 @@ struct CityList: View {
                 }
                 .navigationTitle("오늘의 날씨")
             }
+            .onAppear(perform: listViewModel.weather)
             .listStyle(PlainListStyle())
         }
     }
@@ -40,8 +35,7 @@ struct CityList: View {
 
 struct CityList_Previews: PreviewProvider {
     static var previews: some View {
-        CityList()
-            .environmentObject(WeatherRepository())
-            .environmentObject(ImageCacheManager())
+        let listViewModel: CityListViewModel = DIContainer.shared.resolve()
+        CityList(viewModel: listViewModel)
     }
 }

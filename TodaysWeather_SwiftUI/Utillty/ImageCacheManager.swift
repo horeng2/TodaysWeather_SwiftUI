@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 
 class ImageCacheManager: ObservableObject {
+    static let shared = ImageCacheManager()
     @Published var image = UIImage()
     
     private let cache = NSCache<NSString, UIImage>()
@@ -37,9 +38,7 @@ class ImageCacheManager: ObservableObject {
                 return
             }
             self.saveCacheData(of: newImage, for: url)
-            DispatchQueue.main.async {
-                self.image = newImage
-            }
+            self.image = newImage
         }
         task.resume()
     }
