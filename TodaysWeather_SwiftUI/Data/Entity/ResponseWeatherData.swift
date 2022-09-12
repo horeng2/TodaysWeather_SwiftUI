@@ -12,11 +12,13 @@ struct ResponseWeatherData: Decodable {
     let weather: [BacisInfo]
     let detail: WeatherDetail
     let wind: WindCondition
+    let name: String
     
     private enum CodingKeys: String, CodingKey {
         case weather
         case detail = "main"
         case wind
+        case name
     }
     
     struct BacisInfo: Decodable {
@@ -47,8 +49,8 @@ struct ResponseWeatherData: Decodable {
 }
 
 extension ResponseWeatherData {
-    func domain(of city: City) -> CityWeather {
-        return CityWeather(cityName: city,
+    func domain() -> CityWeather {
+        return CityWeather(cityName: self.name,
                            weatherCondition: self.weather.first!.weatherCondition,
                            description: self.weather.first!.description,
                            iconURL: ImageURL.icon.url(key: self.weather.first!.icon),
