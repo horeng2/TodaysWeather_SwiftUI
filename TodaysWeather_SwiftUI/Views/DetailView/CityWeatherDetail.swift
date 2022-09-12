@@ -23,12 +23,15 @@ struct CityWeatherDetail: View {
     var content: some View {
         VStack {
             Image(uiImage: self.image)
-            Text(cityWeather.cityName)
+                .resizable()
+                .frame(width: 150, height: 150)
+            Text(cityWeather.cityName.localize())
                 .font(.largeTitle)
                 .fontWeight(.bold)
             Text(cityWeather.weatherCondition.localize())
                 .font(.title2)
                 .fontWeight(.bold)
+                .padding(.top, 30)
 
             VStack(spacing: 20) {
                 VStack {
@@ -64,8 +67,8 @@ struct CityWeatherDetail: View {
                         .fontWeight(.bold)
                     Text("\(cityWeather.pressure)")
                 }
-       
             }
+            .padding(.top, 30)
         }
     }
 }

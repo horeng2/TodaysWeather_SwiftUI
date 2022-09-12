@@ -25,20 +25,22 @@ struct CityWeatherRow: View {
         HStack() {
             Image(uiImage: self.image)
                 .resizable()
-                .frame(width: 60, height: 60)
-
+                .frame(width: 50, height: 50)
             Text(cityWeather.cityName.localize())
                 .font(.title2)
+                .fontWeight(.bold)
             Spacer()
-            
             VStack {
                 HStack {
                     Text("☀️ \(cityWeather.currentTemperatures)\(TemperatureUnit.celsius.symbol)")
-                        .font(.subheadline)
+                        .font(.headline)
+                        .fontWeight(.bold)
                 }
+                Spacer()
                 HStack {
                     Text("💧 \(cityWeather.currentHumidity)\(TemperatureUnit.humidity.symbol)")
-                        .font(.subheadline)
+                        .font(.headline)
+                        .fontWeight(.bold)
                 }
             }
         }
