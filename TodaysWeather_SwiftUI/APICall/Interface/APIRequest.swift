@@ -19,38 +19,22 @@ struct RequestComponent {
     
     let scheme = "https"
     let host = "api.openweathermap.org"
-    let weatherPath = "/data/2.5/weather"
-    let geoPath = "/geo.1.0/direct"
+    let path = "/data/2.5/weather"
     let key = Bundle.main.openWeatherAPIKey
     let language = "kr"
     
     
-    func makeWeatherComponents(with geoInfo: GeoInfo) -> URLComponents {
+    func makeWeatherComponents(with city: City) -> URLComponents {
         var components = URLComponents()
         components.scheme = self.scheme
         components.host = self.host
-        components.path = self.weatherPath
+        components.path = self.path
         
         components.queryItems = [
-            URLQueryItem(name: "lat", value: geoInfo.latitude),
-            URLQueryItem(name: "lon", value: geoInfo.longitude),
+            URLQueryItem(name: "q", value: city.rawValue),
+            URLQueryItem(name: "units", value: "metric"),
             URLQueryItem(name: "appid", value: self.key),
             URLQueryItem(name: "lang", value: self.language)
-        ]
-        
-        return components
-    }
-    
-    func makeGeoComponents(with city: City) -> URLComponents {
-        var components = URLComponents()
-        components.scheme = self.scheme
-        components.host = self.host
-        components.path = self.geoPath
-        
-        components.queryItems = [
-            URLQueryItem(name: "q", value: "\(city),\(self.language)"),
-            URLQueryItem(name: "appid", value: self.key),
-            URLQueryItem(name: "litmit", value: "1")
         ]
         
         return components

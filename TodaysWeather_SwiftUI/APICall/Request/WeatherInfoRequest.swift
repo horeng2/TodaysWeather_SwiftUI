@@ -10,10 +10,10 @@ import Foundation
 struct WeatherInfoRequest: APIRequest {
     typealias ResponseType = ResponseWeatherData
         
-    let cityGeoInfo: GeoInfo
+    let city: City
     
     var component: URLComponents {
-        RequestComponent.shared.makeWeatherComponents(with: cityGeoInfo)
+        RequestComponent.shared.makeWeatherComponents(with: city)
     }
     
     var urlRequest: URLRequest? {

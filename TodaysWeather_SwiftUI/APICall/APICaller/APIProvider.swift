@@ -20,12 +20,13 @@ class APIProvider {
             return Fail(error: WeatherError.createUrlError).eraseToAnyPublisher()
         }
         
-        return self.session.dataTaskPublisher(for: request)
+        return self.session
+            .dataTaskPublisher(for: request)
             .mapError{ error in
-                    .network(description: error.localizedDescription)
+                    .responseError
             }
             .flatMap(maxPublishers: .max(1)) { pair in
-              decode(pair.data)
+                decode(pair.data)
             }
             .eraseToAnyPublisher()
     }
