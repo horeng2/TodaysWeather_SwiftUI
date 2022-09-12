@@ -9,14 +9,25 @@ import SwiftUI
 
 @main
 struct TodaysWeather_SwiftUIApp: App {
-    @StateObject private var repository = Repository()
-    @StateObject private var imageCacheManager = ImageCacheManager()
+    init() {
+        self.registerDependencies()
+    }
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(repository)
-                .environmentObject(imageCacheManager)
+            let listViewModel: CityListViewModel = DIContainer.shared.resolve()
+            CityList(viewModel: listViewModel)
         }
+    }
+
+    private func registerDependencies() {
+        DIContainer.shared.register(WeatherRepository())
+
+        let weatherRepository: WeatherRepository = DIContainer.shared.resolve()
+
+        DIContainer.shared.register(WeatherUseCase(repository: weatherRepository))
+        let weatherUseCase: WeatherUseCase = DIContainer.shared.resolve()
+        
+        DIContainer.shared.register(CityListViewModel(weatherUseCase: weatherUseCase))
     }
 }
