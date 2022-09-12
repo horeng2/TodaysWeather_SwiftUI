@@ -16,7 +16,7 @@ struct CityWeather {
     let feelsTemperatures: Int
     let currentHumidity: Int
     let pressure: Int
-    let windSpeed: Double
+    let windSpeed: Int
 }
 
 enum ImageURL {

@@ -48,11 +48,11 @@ extension ResponseWeatherData {
         return CityWeather(cityName: city.rawValue,
                            weatherCondition: self.convertWeatherCondition(to: self.weather.first!.id),
                            iconURL: ImageURL.icon.url(key: self.weather.first!.icon),
-                           currentTemperatures: Int(self.detail.temp),
-                           feelsTemperatures: Int(self.detail.feels_like),
+                           currentTemperatures: self.detail.temp.roundToInt(),
+                           feelsTemperatures: self.detail.feels_like.roundToInt(),
                            currentHumidity: self.detail.humidity,
                            pressure: self.detail.pressure,
-                           windSpeed: self.wind.speed)
+                           windSpeed: self.wind.speed.roundToInt())
     }
     
     func convertWeatherCondition(to weatherID: Int) -> String {
