@@ -24,28 +24,44 @@ struct CityWeatherDetail: View {
         VStack {
             Image(uiImage: self.image)
             Text(cityWeather.cityName)
-                .font(.title)
-            Text(cityWeather.weatherCondition)
+                .font(.largeTitle)
+                .fontWeight(.bold)
+            Text(cityWeather.weatherCondition.localize())
+                .font(.title2)
+                .fontWeight(.bold)
 
             VStack(spacing: 20) {
                 VStack {
                     Text("현재 온도")
+                        .font(.title3)
+                        .fontWeight(.bold)
                     Text("\(cityWeather.currentTemperatures)")
                 }
                 VStack {
                     Text("체감 온도")
+                        .font(.title3)
+                        .fontWeight(.bold)
+
                     Text("\(cityWeather.feelsTemperatures)")
                 }
                 VStack {
                     Text("습도")
+                        .font(.title3)
+                        .fontWeight(.bold)
+
                     Text("\(cityWeather.currentHumidity)")
                 }
                 VStack {
                     Text("풍속")
+                        .font(.title3)
+                        .fontWeight(.bold)
+
                     Text("\(cityWeather.windSpeed)")
                 }
                 VStack {
                     Text("기압")
+                        .font(.title3)
+                        .fontWeight(.bold)
                     Text("\(cityWeather.pressure)")
                 }
        
@@ -56,9 +72,10 @@ struct CityWeatherDetail: View {
 
 struct CityWeatherDetail_PreViews: PreviewProvider {
     static var previews: some View {
+        ForEach(["en", "ko"], id: \.self) { id in
         CityWeatherDetail(cityWeather: CityWeather.mockData[0])
-            .environmentObject(WeatherRepository())
-            .environmentObject(ImageCacheManager())
+                .environment(\.locale, .init(identifier: id))
+        }
     }
 }
 

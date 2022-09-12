@@ -18,7 +18,7 @@ class WeatherUseCase {
     func fetchWeatherInfo(of city: City) -> AnyPublisher<CityWeather, WeatherError> {
         return self.repository.fetchWeatherData(of: city)
             .map{ data in
-                data.domain()
+                data.domain(city: city)
             }
             .eraseToAnyPublisher()
     }

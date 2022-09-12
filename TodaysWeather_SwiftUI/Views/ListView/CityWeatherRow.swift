@@ -8,15 +8,9 @@
 import SwiftUI
 
 struct CityWeatherRow: View {
-//    @EnvironmentObject var imageCacheManager: ImageCacheManager
     @State var image = UIImage()
     var cityWeather: CityWeather
-    
-//    init(cityWeather: CityWeather) {
-//        self.cityWeather = cityWeather
-//        ImageCacheManager.shared.loadImage(url: cityWeather.iconURL)
-//    }
-    
+
     var body: some View {
         content
             .onAppear {
@@ -33,21 +27,17 @@ struct CityWeatherRow: View {
                 .resizable()
                 .frame(width: 60, height: 60)
 
-            Text(cityWeather.cityName)
+            Text(cityWeather.cityName.localize())
                 .font(.title2)
             Spacer()
             
             VStack {
                 HStack {
-                    Text("온도")
-                        .font(.subheadline)
-                    Text("\(cityWeather.currentTemperatures)")
+                    Text("☀️ \(cityWeather.currentTemperatures)\(TemperatureUnit.celsius.symbol)")
                         .font(.subheadline)
                 }
                 HStack {
-                    Text("습도")
-                        .font(.subheadline)
-                    Text("\(cityWeather.currentHumidity)")
+                    Text("💧 \(cityWeather.currentHumidity)\(TemperatureUnit.humidity.symbol)")
                         .font(.subheadline)
                 }
             }
@@ -59,7 +49,9 @@ struct CityWeatherRow: View {
 
 struct CityWeatherRow_Previews: PreviewProvider {
     static var previews: some View {
-        CityWeatherRow(cityWeather: CityWeather.mockData[0])
-            .environmentObject(ImageCacheManager())
+        ForEach(["en", "ko"], id: \.self) { id in
+            CityWeatherRow(cityWeather: CityWeather.mockData[0])
+                .environment(\.locale, .init(identifier: id))
+        }
     }
 }

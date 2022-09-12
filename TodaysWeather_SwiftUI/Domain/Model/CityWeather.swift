@@ -33,7 +33,6 @@ enum ImageURL {
 enum TemperatureUnit {
     case humidity
     case celsius
-    case fahrenheit
     case windSpeed
     case pressure
 
@@ -43,8 +42,6 @@ enum TemperatureUnit {
             return "%"
         case .celsius:
             return "ºC"
-        case .fahrenheit:
-            return "ºF"
         case .windSpeed:
             return "m/s"
         case .pressure:
@@ -55,16 +52,16 @@ enum TemperatureUnit {
 
 extension CityWeather {
     static let mockData: [CityWeather] = [
-        CityWeather(cityName: "Gumi",
-                weatherCondition: "맑음",
+        CityWeather(cityName: "Gongju",
+                weatherCondition: "clear",
                 iconURL: "http://openweathermap.org/img/wn/10d@2x.png",
                 currentTemperatures: 1,
                 feelsTemperatures: 2,
                 currentHumidity: 3,
                 pressure: 4,
                 windSpeed: 5),
-        CityWeather(cityName: "Gwangju",
-                weatherCondition: "흐림",
+        CityWeather(cityName: "Busan",
+                weatherCondition: "snow",
                 iconURL: "http://openweathermap.org/img/wn/11d@2x.png",
                 currentTemperatures: 6,
                 feelsTemperatures: 7,

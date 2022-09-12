@@ -44,8 +44,8 @@ struct ResponseWeatherData: Decodable {
 }
 
 extension ResponseWeatherData {
-    func domain() -> CityWeather {
-        return CityWeather(cityName: self.name,
+    func domain(city: City) -> CityWeather {
+        return CityWeather(cityName: city.rawValue,
                            weatherCondition: self.convertWeatherCondition(to: self.weather.first!.id),
                            iconURL: ImageURL.icon.url(key: self.weather.first!.icon),
                            currentTemperatures: Int(self.detail.temp),
