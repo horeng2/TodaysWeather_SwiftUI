@@ -25,7 +25,7 @@ struct CityWeatherDetail: View {
             Image(uiImage: self.image)
             Text(cityWeather.cityName)
                 .font(.title)
-            Text(cityWeather.description)
+            Text(cityWeather.weatherCondition)
 
             VStack(spacing: 20) {
                 VStack {

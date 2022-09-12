@@ -11,22 +11,12 @@ import SwiftUI
 struct CityWeather {
     let cityName: String
     let weatherCondition: String
-    let description: String
     let iconURL: String
     let currentTemperatures: Int
     let feelsTemperatures: Int
     let currentHumidity: Int
     let pressure: Int
     let windSpeed: Double
-}
-
-enum WeatherConditionType {
-    case clear
-    case cloudy
-    case overcast
-    case rain
-    case snow
-    case unknown
 }
 
 enum ImageURL {
@@ -67,7 +57,6 @@ extension CityWeather {
     static let mockData: [CityWeather] = [
         CityWeather(cityName: "Gumi",
                 weatherCondition: "맑음",
-                description: "맑아요",
                 iconURL: "http://openweathermap.org/img/wn/10d@2x.png",
                 currentTemperatures: 1,
                 feelsTemperatures: 2,
@@ -76,7 +65,6 @@ extension CityWeather {
                 windSpeed: 5),
         CityWeather(cityName: "Gwangju",
                 weatherCondition: "흐림",
-                description: "흐려요",
                 iconURL: "http://openweathermap.org/img/wn/11d@2x.png",
                 currentTemperatures: 6,
                 feelsTemperatures: 7,
