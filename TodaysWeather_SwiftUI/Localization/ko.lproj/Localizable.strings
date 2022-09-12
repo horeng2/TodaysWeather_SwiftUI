@@ -1,0 +1,38 @@
+/* 
+  Localizable.strings
+  TodaysWeather_SwiftUI
+
+  Created by 서녕 on 2022/09/12.
+  
+*/
+
+// MARK: - City Name Localization
+
+"Gongju" = "공주시";
+"Gwangju" = "광주광역시";
+"Gumi" = "구미시";
+"Gunsan" = "군산시";
+"Daegu" = "대구광역시";
+"Daejeon" = "대전시";
+"Mokpo" = "목포시";
+"Busan" = "부산광역시";
+"Seosan" = "서산시";
+"Seoul" = "서울특별시";
+"Sokcho" = "속초시";
+"Suwon" = "수원시";
+"Suncheon" = "순천군";
+"Ulsan" = "울산광역시";
+"Iksan" = "익산시";
+"Jeonju" = "전주시";
+"jeju" = "제주도";
+"Cheonan" = "천안시";
+"Cheongju" = "청주시";
+"Chuncheon" = "춘천시";
+
+// MARK: - Weather Discription Localization
+"clear" = "오늘은 맑아요.";
+"cloudy" = "오늘은 구름이 있어요.";
+"overcast" = "오늘은 흐려요";
+"rain" = "오늘은 비가 와요.";
+"snow" = "오늘은 눈이 와요!";
+ 
