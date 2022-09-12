@@ -11,21 +11,21 @@ enum City: String, CaseIterable, Decodable {
     case Gongju
     case Gwangju
     case Gumi
-//    case Gunsan
-//    case Daegu
-//    case Daejeon
-//    case Mokpo
-//    case Busan
-//    case Seosan
-//    case Seoul
-//    case Sokcho
-//    case Suwon
-//    case Suncheon
-//    case Ulsan
-//    case Iksan
-//    case Jeonju
-//    case jeju
-//    case Cheonan
-//    case Cheongju
-//    case Chuncheon
+    case Gunsan
+    case Daegu
+    case Daejeon
+    case Mokpo
+    case Busan
+    case Seosan
+    case Seoul
+    case Sokcho
+    case Suwon
+    case Suncheon
+    case Ulsan
+    case Iksan
+    case Jeonju
+    case jeju
+    case Cheonan
+    case Cheongju
+    case Chuncheon
 }
