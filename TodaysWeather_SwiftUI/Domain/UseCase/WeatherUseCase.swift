@@ -1,5 +1,5 @@
 //
-//  FetchWeatherUseCase.swift
+//  WeatherUseCase.swift
 //  TodaysWeather_SwiftUI
 //
 //  Created by 서녕 on 2022/09/10.
@@ -17,5 +17,9 @@ class WeatherUseCase {
     
     func fetchWeatherInfo(of city: City) -> AnyPublisher<CityWeather, WeatherError> {
         return self.repository.fetchWeatherData(of: city)
+            .map{ data in
+                data.domain()
+            }
+            .eraseToAnyPublisher()
     }
 }
