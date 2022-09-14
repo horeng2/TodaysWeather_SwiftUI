@@ -9,20 +9,23 @@ import SwiftUI
 
 @main
 struct TodaysWeather_SwiftUIApp: App {
+    @StateObject var listViewModel: CityListViewModel = DIContainer.shared.resolve()
+
     init() {
         self.registerDependencies()
     }
     
     var body: some Scene {
         WindowGroup {
-            let listViewModel: CityListViewModel = DIContainer.shared.resolve()
-            CityList(viewModel: listViewModel)
+            CityList(dataSource: $listViewModel.weatherDataSource)
+                .onAppear{
+                    listViewModel.weather()
+                }
         }
     }
 
     private func registerDependencies() {
         DIContainer.shared.register(WeatherRepository())
-
         let weatherRepository: WeatherRepository = DIContainer.shared.resolve()
 
         DIContainer.shared.register(WeatherUseCase(repository: weatherRepository))

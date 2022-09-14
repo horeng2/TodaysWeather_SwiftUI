@@ -8,12 +8,8 @@
 import SwiftUI
 
 struct CityList: View {
-    @ObservedObject var listViewModel: CityListViewModel
+    @Binding var dataSource: [CityWeather]
 
-    init(viewModel: CityListViewModel) {
-        self.listViewModel = viewModel
-    }
-    
     var body: some View {
             NavigationView {
                 ZStack {
@@ -24,29 +20,29 @@ struct CityList: View {
                         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                         .opacity(1)
                 List {
-                    ForEach(listViewModel.weatherDataSource, id: \.cityName) { cityWeather in
+                    ForEach(dataSource, id: \.cityName) { cityWeather in
                         NavigationLink {
                             CityWeatherDetail(cityWeather: cityWeather)
                         } label: {
                             CityWeatherRow(cityWeather: cityWeather)
                         }
                     }
-                    .navigationTitle("오늘의 날씨")
+                    .navigationTitle("오늘의 날씨".localize())
                     .listRowSeparatorTint(Color.gray)
                     .listRowBackground(Color.clear)
                 }
-                .onAppear(perform: listViewModel.weather)
                 .listStyle(PlainListStyle())
                 .padding(.top, 90)
             }
         }
-            
     }
 }
 
 struct CityList_Previews: PreviewProvider {
     static var previews: some View {
-        let listViewModel: CityListViewModel = DIContainer.shared.resolve()
-        CityList(viewModel: listViewModel)
+        ForEach(["ko", "en"], id: \.self) { id in
+            CityList(dataSource: .constant(CityWeather.mockData))
+                .environment(\.locale, .init(identifier: id))
+        }
     }
 }

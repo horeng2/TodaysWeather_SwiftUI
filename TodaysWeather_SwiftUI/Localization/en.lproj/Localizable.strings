@@ -6,6 +6,8 @@
   
 */
 
+"오늘의 날씨" = "Todays Weather";
+
 // MARK: - Weather Discription Localization
 "clear" = "Today is clear.";
 "cloudy" = "Today is cloudy.";
