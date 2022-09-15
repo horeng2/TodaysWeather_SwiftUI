@@ -16,19 +16,13 @@ struct LoadingView: View {
     var body: some View {
         VStack {
             lconImageView()
-            ProgressView()
-                .progressViewStyle(.circular)
-                .scaleEffect(2)
-                .task(self.loadingTask)
-            Image("title")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 250)
-                .padding()
+            progressView(task: loadingViewTask)
+            titleView()
         }
     }
 }
 
+// MARK: - Displaying View
 extension LoadingView {
     private func lconImageView() -> some View {
         ZStack(alignment: .top) {
@@ -37,6 +31,24 @@ extension LoadingView {
         }
     }
     
+    private func progressView(task: @escaping @Sendable () async -> Void) -> some View {
+        ProgressView()
+            .progressViewStyle(.circular)
+            .scaleEffect(2)
+            .task(task)
+    }
+    
+    private func titleView() -> some View {
+        Image("title")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 250)
+            .padding()
+    }
+}
+
+// MARK: - Animation Image
+extension LoadingView {
     private func sunnyImage() -> some View {
         HStack {
             Image("sunny")
@@ -61,9 +73,12 @@ extension LoadingView {
             .resizable()
             .frame(width: iconWidth + 50, height: iconHeight + 50)
     }
-    
+}
+
+// MARK: - LoadingView Task
+extension LoadingView {
     @Sendable
-    private func loadingTask() async {
+    private func loadingViewTask() async {
         try? await Task.sleep(nanoseconds: 2_500_000_000)
         self.isLoading = false
     }
