@@ -10,24 +10,12 @@ import SwiftUI
 
 struct CityWeather {
     let cityName: String
-    let weatherCondition: String
-    let iconURL: String
+    let weatherCondition: WeatherCondition
     var currentTemperatures: String
     var feelsTemperatures: String
     var humidity: String
     var pressure: String
     var windSpeed: String
-}
-
-enum ImageURL {
-    case icon
-    
-    func url(key: String) -> String {
-        switch self {
-        case .icon:
-            return "http://openweathermap.org/img/wn/\(key)@2x.png"
-        }
-    }
 }
 
 enum TemperatureUnit {
@@ -53,20 +41,18 @@ enum TemperatureUnit {
 extension CityWeather {
     static let mockData: [CityWeather] = [
         CityWeather(cityName: "Gongju",
-                weatherCondition: "clear",
-                iconURL: "http://openweathermap.org/img/wn/10d@2x.png",
-                currentTemperatures: "22",
-                feelsTemperatures: "20",
-                humidity: "50",
-                pressure: "1055",
-                windSpeed: "5"),
+                    weatherCondition: .clear,
+                    currentTemperatures: "22",
+                    feelsTemperatures: "20",
+                    humidity: "50",
+                    pressure: "1055",
+                    windSpeed: "5"),
         CityWeather(cityName: "Busan",
-                weatherCondition: "snow",
-                iconURL: "http://openweathermap.org/img/wn/11d@2x.png",
-                currentTemperatures: "25",
-                feelsTemperatures: "23",
-                humidity: "40",
-                pressure: "999",
-                windSpeed: "10")
+                    weatherCondition: .snow,
+                    currentTemperatures: "25",
+                    feelsTemperatures: "23",
+                    humidity: "40",
+                    pressure: "999",
+                    windSpeed: "10")
     ]
 }

@@ -23,11 +23,9 @@ struct ResponseWeatherData: Decodable {
     
     struct BacisInfo: Decodable {
         let id: Int
-        let icon: String
         
         private enum CodingKeys: String, CodingKey {
             case id
-            case icon
         }
     }
     
@@ -47,7 +45,6 @@ extension ResponseWeatherData {
     func domain(city: City) -> CityWeather {
         return CityWeather(cityName: city.rawValue,
                            weatherCondition: self.convertWeatherCondition(to: self.weather.first!.id),
-                           iconURL: ImageURL.icon.url(key: self.weather.first!.icon),
                            currentTemperatures: String(self.detail.temp.roundToInt()),
                            feelsTemperatures: String(self.detail.feels_like.roundToInt()),
                            humidity: String(self.detail.humidity),
@@ -55,28 +52,28 @@ extension ResponseWeatherData {
                            windSpeed: String(self.wind.speed.roundToInt()))
     }
     
-    func convertWeatherCondition(to weatherID: Int) -> String {
+    func convertWeatherCondition(to weatherID: Int) -> WeatherCondition {
         let rain = (200...599)
         let snow = (600...699)
         let overcast = (700...799)
         let cloudy = (801...899)
         let clear = 800
 
-        let weatherType: WeatherType = {
+        let weatherType: WeatherCondition = {
             if rain.contains(weatherID) {
-                return WeatherType.rain
+                return WeatherCondition.rain
             } else if snow.contains(weatherID) {
-                return WeatherType.snow
+                return WeatherCondition.snow
             } else if overcast.contains(weatherID) {
-                return WeatherType.overcast
+                return WeatherCondition.overcast
             } else if cloudy.contains(weatherID) {
-                return WeatherType.cloudy
+                return WeatherCondition.cloudy
             } else if clear == weatherID {
-                return WeatherType.clear
+                return WeatherCondition.clear
             } else {
-                return WeatherType.unknown
+                return WeatherCondition.unknown
             }
         }()
-        return weatherType.rawValue
+        return weatherType
     }
 }

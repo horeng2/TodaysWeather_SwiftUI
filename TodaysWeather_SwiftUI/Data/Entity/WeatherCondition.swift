@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum WeatherType: String {
+enum WeatherCondition: String {
     case clear
     case cloudy
     case overcast
