@@ -10,14 +10,11 @@ import SwiftUI
 struct CityRowView: View {
     @State var image = UIImage()
     var cityWeather: CityWeather
-
+    
     var body: some View {
         content
             .onAppear {
-                    ImageCacheManager.shared.loadImage(url: cityWeather.iconURL)
-                DispatchQueue.main.async {
-                    self.image = ImageCacheManager.shared.image
-                }
+                loadWeatherInfo()
             }
     }
     
@@ -30,22 +27,35 @@ struct CityRowView: View {
                 .font(.title2)
                 .fontWeight(.bold)
             Spacer()
-            VStack {
-                HStack {
-                    Text("☀️ \(cityWeather.currentTemperatures)")
-                        .font(.headline)
-                        .fontWeight(.bold)
-                }
-                Spacer()
-                HStack {
-                    Text("💧 \(cityWeather.humidity)")
-                        .font(.headline)
-                        .fontWeight(.bold)
-                }
-            }
+            weatherInfoView()
         }
-        .frame(height: 40)
+        .frame(height: 30)
         .padding()
+    }
+}
+
+// MARK: - Displaying View
+extension CityRowView {
+    private func weatherInfoView() -> some View {
+        VStack {
+            Text("☀️ \(cityWeather.currentTemperatures)")
+                .font(.headline)
+                .fontWeight(.bold)
+            Spacer()
+            Text("💧 \(cityWeather.humidity)")
+                .font(.headline)
+                .fontWeight(.bold)
+        }
+    }
+}
+
+// MARK: - Load ImgaeCacheManager
+extension CityRowView {
+    private func loadWeatherInfo() {
+        ImageCacheManager.shared.loadImage(url: cityWeather.iconURL)
+        DispatchQueue.main.async {
+            self.image = ImageCacheManager.shared.image
+        }
     }
 }
 
