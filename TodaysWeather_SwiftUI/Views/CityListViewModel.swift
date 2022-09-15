@@ -9,16 +9,15 @@ import Foundation
 import Combine
 
 class CityListViewModel: ObservableObject {
+    @Published var weatherDataSource = [CityWeather]()
     let weatherUseCase: WeatherUseCase
     var cancelBag = Set<AnyCancellable>()
-
-    @Published var weatherDataSource = [CityWeather]()
     
     init(weatherUseCase: WeatherUseCase) {
         self.weatherUseCase = weatherUseCase
     }
     
-    func weather() {
+    func fetchWeatherDataSource() {
         self.weatherDataSource.removeAll()
         City.allCases.forEach{ city in
             weatherUseCase.fetchWeatherInfo(of: city)
