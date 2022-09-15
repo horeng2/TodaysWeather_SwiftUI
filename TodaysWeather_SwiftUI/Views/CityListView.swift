@@ -1,5 +1,5 @@
 //
-//  CityList.swift
+//  CityListView.swift
 //  TodaysWeather_SwiftUI
 //
 //  Created by 서녕 on 2022/08/28.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CityList: View {
+struct CityListView: View {
     @State var isLoading = true
     @Binding var dataSource: [CityWeather]
     
@@ -29,7 +29,7 @@ struct CityList: View {
     }
 }
 
-extension CityList {
+extension CityListView {
     func backgroundImage() -> some View {
         Image("sky")
             .resizable()
@@ -43,9 +43,9 @@ extension CityList {
         List {
             ForEach(dataSource, id: \.cityName) { cityWeather in
                 NavigationLink {
-                    CityWeatherDetail(cityWeather: cityWeather)
+                    WeatherDetailView(cityWeather: cityWeather)
                 } label: {
-                    CityWeatherRow(cityWeather: cityWeather)
+                    CityRowView(cityWeather: cityWeather)
                 }
             }
             .navigationTitle("오늘의 날씨".localize())
@@ -60,7 +60,7 @@ extension CityList {
 struct CityList_Previews: PreviewProvider {
     static var previews: some View {
         ForEach(["ko", "en"], id: \.self) { id in
-            CityList(dataSource: .constant(CityWeather.mockData))
+            CityListView(dataSource: .constant(CityWeather.mockData))
                 .environment(\.locale, .init(identifier: id))
         }
     }

@@ -1,5 +1,5 @@
 //
-//  CityWeatherDetail.swift
+//  WeatherDetailView.swift
 //  TodaysWeather_SwiftUI
 //
 //  Created by 서녕 on 2022/08/28.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CityWeatherDetail: View {
+struct WeatherDetailView: View {
     @EnvironmentObject var repository: WeatherRepository
     var cityWeather: CityWeather
     @State var image = UIImage()
@@ -88,7 +88,6 @@ struct CityWeatherDetail: View {
                             .fontWeight(.bold)
                             .foregroundColor(Color.white)
                     }
-                    
                 }
                 .padding(.top)
             }
@@ -100,7 +99,7 @@ struct CityWeatherDetail: View {
 struct CityWeatherDetail_PreViews: PreviewProvider {
     static var previews: some View {
         ForEach(["ko", "en"], id: \.self) { id in
-            CityWeatherDetail(cityWeather: CityWeather.mockData[0])
+            WeatherDetailView(cityWeather: CityWeather.mockData[0])
                 .environment(\.locale, .init(identifier: id))
         }
     }

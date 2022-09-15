@@ -1,5 +1,5 @@
 //
-//  CityRow.swift
+//  CityRowView.swift
 //  TodaysWeather_SwiftUI
 //
 //  Created by 서녕 on 2022/08/27.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CityWeatherRow: View {
+struct CityRowView: View {
     @State var image = UIImage()
     var cityWeather: CityWeather
 
@@ -52,7 +52,7 @@ struct CityWeatherRow: View {
 struct CityWeatherRow_Previews: PreviewProvider {
     static var previews: some View {
         ForEach(["en", "ko"], id: \.self) { id in
-            CityWeatherRow(cityWeather: CityWeather.mockData[0])
+            CityRowView(cityWeather: CityWeather.mockData[0])
                 .environment(\.locale, .init(identifier: id))
         }
     }

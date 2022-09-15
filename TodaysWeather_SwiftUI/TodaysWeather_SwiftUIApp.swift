@@ -17,7 +17,7 @@ struct TodaysWeather_SwiftUIApp: App {
     
     var body: some Scene {
         WindowGroup {
-            CityList(dataSource: $listViewModel.weatherDataSource)
+            CityListView(dataSource: $listViewModel.weatherDataSource)
                 .onAppear{
                     listViewModel.weather()
                 }
