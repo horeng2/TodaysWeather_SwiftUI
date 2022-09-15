@@ -22,28 +22,38 @@ struct CityList: View {
     var content: some View {
         NavigationView {
             ZStack {
-                Image("sky")
-                    .resizable()
-                    .scaledToFill()
-                    .edgesIgnoringSafeArea(.all)
-                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-                    .opacity(1)
-            List {
-                ForEach(dataSource, id: \.cityName) { cityWeather in
-                    NavigationLink {
-                        CityWeatherDetail(cityWeather: cityWeather)
-                    } label: {
-                        CityWeatherRow(cityWeather: cityWeather)
-                    }
-                }
-                .navigationTitle("오늘의 날씨".localize())
-                .listRowSeparatorTint(Color.gray)
-                .listRowBackground(Color.clear)
+                backgroundImage()
+                cityListView()
             }
-            .listStyle(PlainListStyle())
-            .padding(.top, 90)
         }
     }
+}
+
+extension CityList {
+    func backgroundImage() -> some View {
+        Image("sky")
+            .resizable()
+            .scaledToFill()
+            .edgesIgnoringSafeArea(.all)
+            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+            .opacity(1)
+    }
+    
+    func cityListView() -> some View {
+        List {
+            ForEach(dataSource, id: \.cityName) { cityWeather in
+                NavigationLink {
+                    CityWeatherDetail(cityWeather: cityWeather)
+                } label: {
+                    CityWeatherRow(cityWeather: cityWeather)
+                }
+            }
+            .navigationTitle("오늘의 날씨".localize())
+            .listRowSeparatorTint(Color.gray)
+            .listRowBackground(Color.clear)
+        }
+        .listStyle(PlainListStyle())
+        .padding(.top, 90)
     }
 }
 
