@@ -6,6 +6,10 @@
   
 */
 
+// MARK: - Loading title Image Name
+"title" = "title_en";
+
+// MARK: - Navigation title
 "오늘의 날씨" = "Todays Weather";
 
 // MARK: - Weather Discription Localization
