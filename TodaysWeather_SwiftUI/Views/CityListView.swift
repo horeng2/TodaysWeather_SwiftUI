@@ -15,16 +15,16 @@ struct CityListView: View {
         if isLoading {
             LoadingView(isLoading: $isLoading)
         } else {
-            content
+            ZStack {
+                backgroundImage()
+                content
+            }
         }
     }
     
     var content: some View {
         NavigationView {
-            ZStack {
-                backgroundImage()
-                cityListView()
-            }
+            cityListView()
         }
     }
 }
@@ -42,11 +42,7 @@ extension CityListView {
     func cityListView() -> some View {
         List {
             ForEach(dataSource, id: \.cityName) { cityWeather in
-                NavigationLink {
-                    WeatherDetailView(cityWeather: cityWeather)
-                } label: {
-                    CityRowView(cityWeather: cityWeather)
-                }
+                makeNavigationLink(of: cityWeather)
             }
             .navigationTitle("오늘의 날씨".localize())
             .listRowSeparatorTint(Color.gray)
@@ -54,6 +50,14 @@ extension CityListView {
         }
         .listStyle(PlainListStyle())
         .padding(.top, 90)
+    }
+    
+    func makeNavigationLink(of weather: CityWeather) -> some View {
+        NavigationLink {
+            WeatherDetailView(cityWeather: weather)
+        } label: {
+            CityRowView(cityWeather: weather)
+        }
     }
 }
 
