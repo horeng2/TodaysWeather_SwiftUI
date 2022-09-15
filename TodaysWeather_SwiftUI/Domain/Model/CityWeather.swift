@@ -12,11 +12,11 @@ struct CityWeather {
     let cityName: String
     let weatherCondition: String
     let iconURL: String
-    let currentTemperatures: Int
-    let feelsTemperatures: Int
-    let currentHumidity: Int
-    let pressure: Int
-    let windSpeed: Int
+    var currentTemperatures: String
+    var feelsTemperatures: String
+    var humidity: String
+    var pressure: String
+    var windSpeed: String
 }
 
 enum ImageURL {
@@ -55,18 +55,18 @@ extension CityWeather {
         CityWeather(cityName: "Gongju",
                 weatherCondition: "clear",
                 iconURL: "http://openweathermap.org/img/wn/10d@2x.png",
-                currentTemperatures: 22,
-                feelsTemperatures: 20,
-                currentHumidity: 50,
-                pressure: 1055,
-                windSpeed: 5),
+                currentTemperatures: "22",
+                feelsTemperatures: "20",
+                humidity: "50",
+                pressure: "1055",
+                windSpeed: "5"),
         CityWeather(cityName: "Busan",
                 weatherCondition: "snow",
                 iconURL: "http://openweathermap.org/img/wn/11d@2x.png",
-                currentTemperatures: 25,
-                feelsTemperatures: 23,
-                currentHumidity: 40,
-                pressure: 999,
-                windSpeed: 10)
+                currentTemperatures: "25",
+                feelsTemperatures: "23",
+                humidity: "40",
+                pressure: "999",
+                windSpeed: "10")
     ]
 }

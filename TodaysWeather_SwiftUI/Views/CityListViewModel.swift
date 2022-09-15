@@ -31,7 +31,14 @@ class CityListViewModel: ObservableObject {
                         break
                     }
                 } receiveValue: { [weak self] weatherInfo in
-                    self?.weatherDataSource.append(weatherInfo)
+                    var weather = weatherInfo
+                    weather.currentTemperatures = "\(weather.currentTemperatures)" + TemperatureUnit.celsius.symbol
+                    weather.feelsTemperatures = "\(weather.feelsTemperatures)" + TemperatureUnit.celsius.symbol
+                    weather.humidity = "\(weather.humidity)" + TemperatureUnit.humidity.symbol
+                    weather.pressure = "\(weather.pressure)" + TemperatureUnit.pressure.symbol
+                    weather.windSpeed = "\(weather.windSpeed)" + TemperatureUnit.windSpeed.symbol
+
+                    self?.weatherDataSource.append(weather)
                 }
                 .store(in: &cancelBag)
         }

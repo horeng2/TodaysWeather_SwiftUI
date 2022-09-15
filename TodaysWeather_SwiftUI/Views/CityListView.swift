@@ -15,13 +15,10 @@ struct CityListView: View {
         if isLoading {
             LoadingView(isLoading: $isLoading)
         } else {
-            ZStack {
-                backgroundImage()
-                content
-            }
+            content
         }
     }
-    
+
     var content: some View {
         NavigationView {
             cityListView()
@@ -30,15 +27,6 @@ struct CityListView: View {
 }
 
 extension CityListView {
-    func backgroundImage() -> some View {
-        Image("sky")
-            .resizable()
-            .scaledToFill()
-            .edgesIgnoringSafeArea(.all)
-            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-            .opacity(1)
-    }
-    
     func cityListView() -> some View {
         List {
             ForEach(dataSource, id: \.cityName) { cityWeather in
@@ -49,7 +37,7 @@ extension CityListView {
             .listRowBackground(Color.clear)
         }
         .listStyle(PlainListStyle())
-        .padding(.top, 90)
+        .padding(.top)
     }
     
     func makeNavigationLink(of weather: CityWeather) -> some View {
@@ -64,7 +52,7 @@ extension CityListView {
 struct CityList_Previews: PreviewProvider {
     static var previews: some View {
         ForEach(["ko", "en"], id: \.self) { id in
-            CityListView(dataSource: .constant(CityWeather.mockData))
+            CityListView(isLoading: false, dataSource: .constant(CityWeather.mockData))
                 .environment(\.locale, .init(identifier: id))
         }
     }

@@ -32,13 +32,13 @@ struct CityRowView: View {
             Spacer()
             VStack {
                 HStack {
-                    Text("☀️ \(cityWeather.currentTemperatures)\(TemperatureUnit.celsius.symbol)")
+                    Text("☀️ \(cityWeather.currentTemperatures)")
                         .font(.headline)
                         .fontWeight(.bold)
                 }
                 Spacer()
                 HStack {
-                    Text("💧 \(cityWeather.currentHumidity)\(TemperatureUnit.humidity.symbol)")
+                    Text("💧 \(cityWeather.humidity)")
                         .font(.headline)
                         .fontWeight(.bold)
                 }
