@@ -8,16 +8,12 @@
 import SwiftUI
 
 struct CityList: View {
-    @Binding var dataSource: [CityWeather]
     @State var isLoading = true
-
+    @Binding var dataSource: [CityWeather]
+    
     var body: some View {
         if isLoading {
-            ProgressView()
-                .progressViewStyle(CircularProgressViewStyle())
-                .scaleEffect(2)
-                .task(loadingView)
-            
+            LoadingView(isLoading: $isLoading)
         } else {
             content
         }
@@ -48,14 +44,6 @@ struct CityList: View {
             .padding(.top, 90)
         }
     }
-    }
-}
-
-extension CityList {
-    @Sendable
-    func loadingView() async {
-        try? await Task.sleep(nanoseconds: 1_500_000_000)
-        self.isLoading = false
     }
 }
 
