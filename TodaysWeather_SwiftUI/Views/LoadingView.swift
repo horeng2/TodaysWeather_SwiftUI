@@ -51,7 +51,7 @@ extension LoadingView {
 extension LoadingView {
     private func sunnyImage() -> some View {
         HStack {
-            Image("sunny")
+            Image("sun")
                 .resizable()
                 .frame(width: iconWidth, height: iconHeight)
                 .frame(maxHeight: .ulpOfOne)

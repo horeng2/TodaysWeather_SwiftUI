@@ -8,91 +8,81 @@
 import SwiftUI
 
 struct WeatherDetailView: View {
-    @EnvironmentObject var repository: WeatherRepository
     var cityWeather: CityWeather
-    @State var image = UIImage()
     
     var body: some View {
-        content
-            .onAppear {
-                ImageCacheManager.shared.loadImage(url: cityWeather.iconURL)
-                self.image = ImageCacheManager.shared.image
-            }
+        ZStack {
+            backgroundImageView()
+            content
+        }
+        .ignoresSafeArea()
     }
     
     var content: some View {
-        ZStack {
-            Image("nightSky")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
-                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-                .opacity(0.85)
-            
-            VStack {
-                Text(cityWeather.cityName.localize())
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.white)
-                Image(uiImage: self.image)
-                    .resizable()
-                    .frame(width: 130, height: 130)
-                Text(cityWeather.weatherCondition.localize())
-                    .font(.title2)
-                    .foregroundColor(Color.white)
-                    .padding(.top, 10)
-                
-                VStack(spacing: 20) {
-                    VStack {
-                        Text("현재 온도")
-                            .font(.title3)
-                            .foregroundColor(Color.white)
-                        Text("\(cityWeather.currentTemperatures)")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.white)
-                    }
-                    VStack {
-                        Text("체감 온도")
-                            .font(.title3)
-                            .foregroundColor(Color.white)
-                        Text("\(cityWeather.feelsTemperatures)")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.white)
-                    }
-                    VStack {
-                        Text("습도")
-                            .font(.title3)
-                            .foregroundColor(Color.white)
-                        Text("\(cityWeather.humidity)")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.white)
-                    }
-                    VStack {
-                        Text("풍속")
-                            .font(.title3)
-                            .foregroundColor(Color.white)
-                        Text("\(cityWeather.windSpeed)")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.white)
-                    }
-                    VStack {
-                        Text("기압")
-                            .font(.title3)
-                            .foregroundColor(Color.white)
-                        Text("\(cityWeather.pressure)")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.white)
-                    }
-                }
-                .padding(.top)
-            }
+        VStack {
+            cityNameView()
+            weatherIconView(cityWeather.weatherCondition)
+            descriptionView()
+            weatherInfoView()
         }
-        .ignoresSafeArea()
+    }
+}
+
+// MARK: - Displaying View
+extension WeatherDetailView {
+    private func backgroundImageView() -> some View {
+        Image("nightSky")
+            .resizable()
+            .scaledToFill()
+            .edgesIgnoringSafeArea(.all)
+            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+            .opacity(0.85)
+    }
+    
+    private func cityNameView() -> some View {
+        Text(cityWeather.cityName.localize())
+            .font(.largeTitle)
+            .fontWeight(.bold)
+            .foregroundColor(Color.white)
+    }
+    
+    private func descriptionView() -> some View {
+        Text(cityWeather.weatherCondition.rawValue.localize())
+            .font(.title2)
+            .foregroundColor(Color.white)
+            .padding(.top)
+    }
+    
+    private func weatherInfoView() -> some View {
+        VStack(spacing: 20) {
+            weatherDetail(title: "현재 온도", info: cityWeather.currentTemperatures)
+            weatherDetail(title: "체감 온도", info: cityWeather.feelsTemperatures)
+            weatherDetail(title: "습도", info: cityWeather.humidity)
+            weatherDetail(title: "풍속", info: cityWeather.windSpeed)
+            weatherDetail(title: "기압", info: cityWeather.pressure)
+        }
+        .padding(.top)
+    }
+    
+    private func weatherDetail(title: String, info: String) -> some View {
+        VStack {
+            Text(title)
+                .font(.title3)
+                .foregroundColor(Color.white)
+            Text(info)
+                .font(.title2)
+                .fontWeight(.bold)
+                .foregroundColor(Color.white)
+        }
+    }
+}
+
+// MARK: - Load Icon Image
+extension WeatherDetailView {
+    private func weatherIconView(_ weather: WeatherCondition) -> some View {
+        Image("\(weather.rawValue)")
+            .resizable()
+            .frame(width: 120, height: 120)
     }
 }
 

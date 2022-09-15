@@ -13,24 +13,17 @@ struct CityRowView: View {
     
     var body: some View {
         content
-            .onAppear {
-                loadWeatherInfo()
-            }
+            .frame(height: 30)
+            .padding()
     }
     
     private var content: some View {
         HStack() {
-            Image(uiImage: self.image)
-                .resizable()
-                .frame(width: 50, height: 50)
-            Text(cityWeather.cityName.localize())
-                .font(.title2)
-                .fontWeight(.bold)
+            weatherIconView(cityWeather.weatherCondition)
+            cityNameView()
             Spacer()
             weatherInfoView()
         }
-        .frame(height: 30)
-        .padding()
     }
 }
 
@@ -47,15 +40,21 @@ extension CityRowView {
                 .fontWeight(.bold)
         }
     }
+    
+    private func cityNameView() -> some View {
+        Text(cityWeather.cityName.localize())
+            .font(.title2)
+            .fontWeight(.bold)
+    }
 }
 
-// MARK: - Load ImgaeCacheManager
+// MARK: - Load Icon Image
 extension CityRowView {
-    private func loadWeatherInfo() {
-        ImageCacheManager.shared.loadImage(url: cityWeather.iconURL)
-        DispatchQueue.main.async {
-            self.image = ImageCacheManager.shared.image
-        }
+    private func weatherIconView(_ weather: WeatherCondition) -> some View {
+        Image("\(weather.rawValue)")
+            .resizable()
+            .frame(width: 40, height: 40)
+            .padding(.trailing, 15)
     }
 }
 
