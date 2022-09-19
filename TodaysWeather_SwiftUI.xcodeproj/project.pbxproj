@@ -131,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				4822DACC28B9EBCA00400AEA /* TodaysWeather_SwiftUIApp.swift */,
+				48811E9D28CF49C20062F55F /* Localization */,
 				48F54D1628D8236A005F9AED /* Presentation */,
 				48811E4328CC85DE0062F55F /* Domain */,
 				48811E4028CC856C0062F55F /* Data */,
@@ -259,7 +260,6 @@
 		48B9F8BC28C77345003E5C9B /* Utillty */ = {
 			isa = PBXGroup;
 			children = (
-				48811E9D28CF49C20062F55F /* Localization */,
 				48811E4D28CDB70D0062F55F /* DIContainer.swift */,
 				48811E3A28CA6EA40062F55F /* Parsing.swift */,
 				48811E3C28CA6ED30062F55F /* WeatherError.swift */,
