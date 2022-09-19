@@ -66,7 +66,7 @@ extension WeatherDetailView {
     
     private func weatherDetail(title: String, info: String) -> some View {
         VStack {
-            Text(title)
+            Text(title.localize())
                 .font(.title3)
                 .foregroundColor(Color.white)
             Text(info)
