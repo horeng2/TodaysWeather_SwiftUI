@@ -12,7 +12,7 @@ struct CityListView: View {
     @Binding var dataSource: [CityWeather]
     
     var body: some View {
-        if isLoading {
+        if isLoading || dataSource.isEmpty {
             LoadingView(isLoading: $isLoading)
         } else {
             content
