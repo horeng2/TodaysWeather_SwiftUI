@@ -1,6 +1,6 @@
 # 오늘의 날씨 프로젝트
-- OpenWeather API를 이용한 날씨 정보 앱 개발 프로젝트
-- [기존 UIKit 프로젝트](https://github.com/horeng2/TodaysWeather)를 `Combine`/`SwiftUI`로 리팩토링
+- OpenWeather API를 이용한 날씨 정보 앱 개발 프로젝트입니다.
+- [기존 UIKit 프로젝트](https://github.com/horeng2/TodaysWeather)를 `Combine`/`SwiftUI`로 리팩토링하였습니다.
 
 ## 목차
 - [키워드](##키워드)
