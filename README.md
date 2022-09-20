@@ -3,14 +3,14 @@
 - [기존 UIKit 프로젝트](https://github.com/horeng2/TodaysWeather)를 `Combine`/`SwiftUI`로 리팩토링
 
 ## 목차
-- [키워드](###키워드)
-- [프로젝트 소개](###프로젝트_소개)
-- [주요 기능](###주요_기능)
-- [시도해본 점](###시도해본_점)
-- [Trouble Shooting](###Trouble_Shooting)
-- [새롭게 알게 된 것](###새롭게_알게_된_것)
+- [키워드](##키워드)
+- [프로젝트 소개](##프로젝트_소개)
+- [주요 기능](##주요_기능)
+- [시도해본 점](##시도해본_점)
+- [Trouble Shooting](##Trouble_Shooting)
+- [새롭게 알게 된 것](##새롭게_알게_된_것)
 
-### 키워드
+## 키워드
 - `Combine`
 - `SwiftUI`
     - `Animation`
@@ -22,12 +22,12 @@
     - `Image localization`
 - `OpenWeather API`
 
-### 프로젝트 소개
+## 프로젝트 소개
 OpenWeather API를 이용한 날씨 정보 앱입니다.
 
 Combine을 이용해 통신하며, 최초 로딩화면에 Animation이 적용되었습니다.
 
-### 디렉토리 구조
+## 🗂 디렉토리 구조
 ```
 ├── Presenter
 │   ├── Views
@@ -71,7 +71,7 @@ Combine을 이용해 통신하며, 최초 로딩화면에 Animation이 적용되
     └── Assets.xcassets
 
 ```
-### 기능
+## 기능
 - 한국어
 
 |초기 화면|동작 화면|
@@ -85,16 +85,16 @@ Combine을 이용해 통신하며, 최초 로딩화면에 Animation이 적용되
 |![Simulator Screen Recording - iPhone 13 - 2022-09-19 at 16 02 15](https://user-images.githubusercontent.com/87305744/190969964-d78b2452-2010-4ee2-b736-02a26ed6f171.gif)|![Simulator Screen Recording - iPhone 13 - 2022-09-19 at 16 04 12](https://user-images.githubusercontent.com/87305744/190970118-aa1467ac-4721-4766-a93f-80e2ed39f42b.gif)|
 
 
-### 시도해본 점
+## 시도해본 점
 - DIContainer
 로딩화면, 로딩 애니메이션
 프리뷰에서 바인딩 객체값 지정
 DIContainer
 
-### 고민점
+## 고민점
 프리뷰에서 다국어 여러개 보는 것
 길어지는 코드
 SwiftUI에서의 MVVM
 재사용성 확장을 위해 뷰에서부터 뷰모델 분리
-### Trouble Shooting
-### 새롭게 알게 된 것
+## Trouble Shooting
+## 새롭게 알게 된 것
